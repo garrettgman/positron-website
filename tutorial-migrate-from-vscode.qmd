@@ -1,6 +1,6 @@
 ---
 title: "Migrate from VS Code to Positron"
-description: "You already know the VS Code interface. This hands-on tutorial shows VS Code users what is different in Positron and how those differences make it a better editor for data science."
+description: "Import your VS Code settings and extensions into Positron and see what makes Positron different."
 ---
 
 ::: {.callout-note}
@@ -9,19 +9,37 @@ description: "You already know the VS Code interface. This hands-on tutorial sho
 
 You just finished your first analysis in Positron. If a few things felt slightly unfamiliar compared to VS Code, this tutorial explains them, and shows you why they work the way they do.
 
-**Here is the good news: you already know most of Positron.** Positron is built on [Code OSS](https://github.com/microsoft/vscode), the open source core of VS Code. The editor, the Command Palette, the Terminal, the Git client, and the extensions system all work the way you expect. You do not need to relearn them.
+**Good news: as a VS Code user, you already know most of Positron.** Positron is built on [Code OSS](https://github.com/microsoft/vscode), the open source core of VS Code. These parts of Positron all work the way you expect, so you do not need to relearn them: 
 
-What is different is everything Positron adds for data science: a first-class Console, live Variables, Plots, and a Data Explorer, plus native Python and R support with no setup. Over the next 20 minutes you will bring your VS Code setup across, then meet the tools that make Positron more than a general-purpose editor.
+- Editor
+- Command Palette
+- Terminal
+- Git client
+- Extensions system
+
+What is different is everything Positron adds for data science: 
+
+- a first-class Console
+- a live Variables tracker
+- a Plots pane
+- a Data Explorer
+- native Python and R support with no setup 
+
+Over the next 20 minutes you will bring your VS Code setup to Positron, then meet the tools that make Positron more than a general-purpose editor.
 
 ::: {.callout-note}
 **You do not have to give up VS Code.** The extensions and settings you install for Positron are kept separate from your VS Code installation and will not interfere with it. You can use both editors side by side.
+:::
+
+::: {.callout-note}
+Positron also ships with an interactive **Migrating from VS Code to Positron** walkthrough. Open it anytime from the Command Palette by searching for _Welcome: Open Walkthrough..._ and selecting it. Treat it as a quick-reference companion to this tutorial.
 :::
 
 # Bring your settings and keybindings across
 
 You have spent time tuning VS Code: your theme, your font size, your keybindings, your formatter. You do not have to redo any of that.
 
-Positron can import your user settings directly from VS Code. On its first launch it offers to do this with a notification, and it shows you a preview before saving so you can review and adjust what comes across. Your keybindings come with your settings, so your muscle memory carries over.
+Positron can import your user settings directly from VS Code. On its first launch, it offers to do this with a notification, and it shows you a preview before saving so you can review and adjust what comes across. Your keybindings come with your settings, so your muscle memory carries over.
 
 **We recommend importing your settings** so Positron starts out feeling like the editor you already configured.
 
@@ -29,33 +47,28 @@ Positron can import your user settings directly from VS Code. On its first launc
 Open the Command Palette with {{< kbd mac=Command-Shift-P win=Ctrl-Shift-P linux=Ctrl-Shift-P >}}, search for _Preferences: Import Settings..._, and run it. Review the preview, then confirm.
 
 **You will know it worked when** your familiar theme and settings appear in Positron.
-:::
 
-<!-- [TODO: Add a short screen capture of running Preferences: Import Settings and reviewing the preview.] -->
+<!-- {{< video videos/tutorial-vscode-import-settings.mp4 aria-label="Running Preferences: Import Settings and reviewing the preview" >}} -->
 
-::: {.callout-note}
-Positron also ships with an interactive **Migrating from VS Code to Positron** walkthrough. Open it anytime from the Command Palette by searching for _Welcome: Open Walkthrough..._ and selecting it. Treat it as a quick-reference companion to this tutorial.
 :::
 
 # Install your extensions from a different marketplace
 
-Extensions work in Positron much as they do in VS Code: open the Extensions view from the **Activity Bar**, or run _Extensions: Focus on Extensions View_ from the Command Palette, then search by name or keyword.
+Extensions work in Positron much as they do in VS Code: open the Extensions view from the **Activity Bar**, or run _Extensions: Focus on Extensions View_ from the Command Palette, then search for Extensions by name or keyword.
 
-The one real difference is *where* the extensions come from. Positron does not use Microsoft's Visual Studio Marketplace. This is necessary for licensing reasons: Microsoft only permits access to that marketplace from their own VS Code builds. Instead, Positron installs extensions from [Posit Public Package Manager](https://p3m.dev), which serves the same catalog as [Open VSX](https://open-vsx.org/), the vendor-neutral, open source marketplace that Posit helps sponsor.
+The one real difference is *where* the extensions come from. Positron does not use Microsoft's Visual Studio Marketplace. Microsoft reserves that marketplace for their proprietary VS Code builds. Instead, Positron installs extensions from [Posit Public Package Manager](https://p3m.dev), which serves the same catalog as [Open VSX](https://open-vsx.org/), the vendor-neutral, open source marketplace for VS Code. Here, you will find over 10,000 extensions, including those published by data science software companies such as SAS, Snowflake, and Databricks. The extensions you won't find are the ones built with proprietary Microsoft code and licensed only for use inside Microsoft's own VS Code product.
 
-Because Positron is source available under a permissive license rather than a proprietary Microsoft product, open source extensions work here, including those published by data science software companies such as SAS, Snowflake, and Databricks. The extensions that will *not* work are the ones built with proprietary Microsoft code and licensed only for use inside Microsoft's own VS Code product.
+Here is some more good news: **the Microsoft Python and Jupyter extensions you rely on in VS Code are not needed in Positron.** Positron provides their functionality natively, with no setup. Out of the box you already have:
 
-The most useful consequence: **the Microsoft Python and Jupyter extensions you rely on in VS Code are not needed in Positron.** Positron provides their functionality natively, with no setup. Out of the box you already have:
-
-| VS Code setup | In Positron |
+| In Positron | In VS Code |
 |---|---|
-| Microsoft Python extension (`ms-python.python`) | Native Python support: code completion, type checking, debugging, and more, built in |
-| Jupyter extension | Bundled Jupyter notebook support |
-| A formatter and linter you installed and configured | Bundled [Ruff](https://docs.astral.sh/ruff/) for linting and formatting |
-| A separate publishing workflow | Bundled [Quarto](https://quarto.org/) support |
+| Native Python support: code completion, type checking, debugging, and more, built in | Requires Microsoft Python extension (`ms-python.python`)|
+| Bundled Jupyter notebook support | Requires Jupyter extension |
+| Bundled [Ruff](https://docs.astral.sh/ruff/) for linting and formatting | Requires you to install and configure a formatter and linter, like Black Formatter and Pylint | 
+| Bundled [Quarto](https://quarto.org/) support | Requires a separate publishing workflow | 
 
 ::: {.callout-note}
-**Coming from the R extension?** Few VS Code users write R there, but if you use the third-party `vscode-r` extension, note that it is [not compatible with Positron](extensions.qmd#non-compatible-extensions). You do not need it: Positron replaces it with deeper, native R support, the same way it does for Python.
+**Are you an R user?** You no longer need the  `vscode-r` extension. Positron provides deeper, native R support, the same way it does for Python.
 :::
 
 ::: {.callout-tip title="Try it now"}
@@ -85,13 +98,14 @@ mpg.shape
 ```
 
 **You will know it worked when** the Console prints the shape of the data frame, and `mpg` appears in the Variables pane, without you adding a cell to your notebook.
-:::
 
-<!-- [TODO: Add a screen capture of running a line in the Console and watching it appear in the Variables pane.] -->
+<!-- {{< video videos/tutorial-vscode-variables.mp4 aria-label="Saving an object in the Console and watching it appear in the Variables pane." >}} -->
+
+:::
 
 ## Check your code against another environment
 
-Here is something the VS Code REPL cannot do easily. Positron lets you run **several Console sessions at once**, each on a different Python version or environment. That makes it simple to answer a common question: *will the code in my cell also run somewhere else?*
+Positron lets you run **several Console sessions at once**, each on a different Python version or environment. That makes it simple to answer a common question: *will the code in my cell also run somewhere else?*
 
 Say you want to confirm your analysis works on a different Python version, or in a coworker's environment. Open a second Console session on that interpreter and run the same code. Both sessions stay open, and the **Interpreter picker** in the top right shows which one is active.
 
@@ -111,7 +125,7 @@ The Console feeds a set of data science panes that VS Code does not provide nati
 
 - The **Variables pane** lists every object in your active session, with its type and value. You saw `mpg` appear there a moment ago.
 - The **Data Explorer** opens any data frame in a sortable, filterable grid with per-column summary statistics. Its filters are ephemeral, so you can explore without changing your code, then click **Convert to Code** when you want to keep a step.
-- The **Plots pane** collects the plots your code creates, keeps a history you can page through, and lets you export them or jump back to the code that produced each one.
+- The **Plots pane** collects the plots your code creates, keeps a history you can page through, and lets you export them or jump back to the code that produced each one. You can drive the Plots pane with the Console, which means you no longer need a notebook just to see a plot.
 - The **Help pane** shows documentation for Python objects and packages as you work.
 
 ::: {.callout-tip title="Try it now"}
@@ -122,18 +136,26 @@ In the Console, open your data frame in the Data Explorer by running:
 ```
 
 **You will know it worked when** `mpg` opens in a grid. Sort a column by clicking its header, then open the summary panel to see its distribution.
+
+<!-- {{< video videos/tutorial-vscode-data-explorer.mp4 aria-label="Opening the Data Explorer with %view and sorting a column." >}} -->
 :::
 
-<!-- [TODO: Add a screen capture of %view opening the Data Explorer and sorting a column.] -->
+You can also open the data explorer by clicking the {{< fa table-cells >}} next to `mpg` in the Variables pane.
 
 # Your notebook, upgraded
 
-You may have noticed the notebook in the last tutorial looked a little different from the one in VS Code. That is because **Positron's own notebook editor is the default**, in place of the VS Code notebook editor. It is built for data science, with notebook-aware AI assistance and the same integrated data exploration you just used.
+You may have noticed the notebook in the last tutorial looked a little different from the one in VS Code. That is because **Positron uses an enhanced notebook editor built for data science**. It comes with notebook-aware AI assistance and is synchronized with the Variables, Plots, Help, History, and Data Explorer panes you just used.
 
 If you prefer the editor you know from VS Code, Positron still includes it as the [Legacy Notebook Editor](legacy-notebook-editor.qmd), and you can switch between the two.
 
-::: {.callout-note}
-Learn more about both editors in [Working with Jupyter Notebooks](jupyter-notebooks.qmd), or read the [launch article](https://posit.co/blog/announcing-the-positron-notebook-editor-for-jupyter-notebooks/) for the Positron Notebook Editor.
+::: {.callout-tip title="Try it now"}
+If you didn't try Posit's Notebook editor in the last tutorial, try it now:
+
+1. Run _Create: New Jupyter Notebook_
+2. Experiment with adding cells and running code, like `from plotnine.data import mpg`
+3. Watch the Variables, Plot, Help, History, and Data Explorer panes interact with the notebook
+
+<!-- {{< video videos/tutorial-vscode-notebooks.mp4 aria-label="The entire IDE tracks and responds to the Notebook Editor." >}} -->
 :::
 
 # Set up AI with your Copilot account
@@ -158,7 +180,9 @@ In VS Code you often install a Python version yourself and then point the editor
 
 Positron discovers the interpreters and virtual environments already on your system automatically, including those created with venv, uv, pyenv, conda, and others. If you create a new environment that it does not pick up, run _Interpreter: Discover All Interpreters_ to refresh the list.
 
-If you do not have a suitable Python at all, Positron can install one for you with [uv](https://docs.astral.sh/uv/), the fast Python package and project manager. When you start a session without a valid Python available, Positron offers to install Python via uv and build an environment for you. You can also do this anytime with the _Python: Install Python via uv_ command.
+<!-- ![Interpreter: Discover All Interpreters](images/tutorial-vscode-discover-interpreters.png){fig-alt="A screenshot displaying the list of local Python and R interpreters discovered by the Interpreter: Discover All Interpreters command."} -->
+
+If you do not have Python on your computer, Positron can install Python for you with [uv](https://docs.astral.sh/uv/). When you start a session without a valid Python available, Positron offers to install Python via uv and build an environment for you. You can also do this anytime with the _Python: Install Python via uv_ command.
 
 ::: {.callout-note}
 When Positron detects a `pyproject.toml` or `requirements.txt` in a project with no environment yet, it offers to create a `.venv` and install the dependencies with uv. See [Python installations and environments](python-installations.qmd) for the full set of options and settings, such as [`python.interpreters.include`](positron://settings/python.interpreters.include).

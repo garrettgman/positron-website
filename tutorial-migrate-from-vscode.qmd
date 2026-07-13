@@ -48,7 +48,7 @@ Open the Command Palette with {{< kbd mac=Command-Shift-P win=Ctrl-Shift-P linux
 
 **You will know it worked when** your familiar theme and settings appear in Positron.
 
-<!-- {{< video videos/tutorial-vscode-import-settings.mp4 aria-label="Running Preferences: Import Settings and reviewing the preview" >}} -->
+{{< video videos/tutorial-vscode-import-settings.mp4 aria-label="Running Preferences: Import Settings and reviewing the preview" >}}
 
 :::
 
@@ -99,7 +99,7 @@ mpg.shape
 
 **You will know it worked when** the Console prints the shape of the data frame, and `mpg` appears in the Variables pane, without you adding a cell to your notebook.
 
-<!-- {{< video videos/tutorial-vscode-variables.mp4 aria-label="Saving an object in the Console and watching it appear in the Variables pane." >}} -->
+{{< video videos/tutorial-vscode-variables.mp4 aria-label="Saving an object in the Console and watching it appear in the Variables pane." >}}
 
 :::
 
@@ -132,12 +132,12 @@ The Console feeds a set of data science panes that VS Code does not provide nati
 In the Console, open your data frame in the Data Explorer by running:
 
 ```python
-%view mpg
+view mpg
 ```
 
 **You will know it worked when** `mpg` opens in a grid. Sort a column by clicking its header, then open the summary panel to see its distribution.
 
-<!-- {{< video videos/tutorial-vscode-data-explorer.mp4 aria-label="Opening the Data Explorer with %view and sorting a column." >}} -->
+{{< video videos/tutorial-vscode-data-explorer.mp4 aria-label="Opening the Data Explorer with %view and sorting a column." >}}
 :::
 
 You can also open the data explorer by clicking the {{< fa table-cells >}} next to `mpg` in the Variables pane.
@@ -155,7 +155,7 @@ If you didn't try Posit's Notebook editor in the last tutorial, try it now:
 2. Experiment with adding cells and running code, like `from plotnine.data import mpg`
 3. Watch the Variables, Plot, Help, History, and Data Explorer panes interact with the notebook
 
-<!-- {{< video videos/tutorial-vscode-notebooks.mp4 aria-label="The entire IDE tracks and responds to the Notebook Editor." >}} -->
+{{< video videos/tutorial-vscode-notebooks.mp4 aria-label="The entire IDE tracks and responds to the Notebook Editor." >}}
 :::
 
 # Set up AI with your Copilot account
@@ -178,9 +178,9 @@ GitHub Copilot is currently a preview provider. For account requirements and oth
 
 In VS Code you often install a Python version yourself and then point the editor at it. Positron does more of this for you.
 
-Positron discovers the interpreters and virtual environments already on your system automatically, including those created with venv, uv, pyenv, conda, and others. If you create a new environment that it does not pick up, run _Interpreter: Discover All Interpreters_ to refresh the list.
+Positron discovers the interpreters and virtual environments already on your system automatically, including those created with venv, uv, pyenv, conda, and others. Run _Interpreter: Start New Console Session_ to see the interpreters available in your session. If you create a new environment that it does not pick up, run _Interpreter: Discover All Interpreters_ to refresh the list.
 
-<!-- ![Interpreter: Discover All Interpreters](images/tutorial-vscode-discover-interpreters.png){fig-alt="A screenshot displaying the list of local Python and R interpreters discovered by the Interpreter: Discover All Interpreters command."} -->
+![Interpreter: Start New Console Session](images/tutorial-vscode-available-interpreters.png){fig-alt="A screenshot displaying the list of local Python and R interpreters discovered by the Interpreter: Start New Console Session command."}
 
 If you do not have Python on your computer, Positron can install Python for you with [uv](https://docs.astral.sh/uv/). When you start a session without a valid Python available, Positron offers to install Python via uv and build an environment for you. You can also do this anytime with the _Python: Install Python via uv_ command.
 

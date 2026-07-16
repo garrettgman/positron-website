@@ -4,7 +4,7 @@ description: "Import your VS Code settings and extensions into Positron and see 
 ---
 
 ::: {.callout-note}
-Is this the right tutorial to start with? This tutorial picks up where [First data analysis with Python in a Jupyter Notebook](tutorial-get-started-ipynb.qmd) leaves off, using the same project. If you have not done that tutorial yet, start there. It takes about 15 minutes and leaves you with a project you can configure here.
+Should you take this tutorial first? This tutorial picks up where [First data analysis with Python in a Jupyter Notebook](tutorial-get-started-ipynb.qmd) leaves off, using the same project. If you have not done that tutorial yet, start there. It takes about 15 minutes and leaves you with a project you can configure here.
 :::
 
 You just finished your first analysis in Positron. If a few things felt slightly unfamiliar compared to VS Code, this tutorial explains them, and shows you why they work the way they do.
@@ -47,9 +47,10 @@ We recommend importing your settings so Positron starts out feeling like the edi
 Open the Command Palette with {{< kbd mac=Command-Shift-P win=Ctrl-Shift-P linux=Ctrl-Shift-P >}}, search for _Preferences: Import Settings_, and run it. Review the preview, then confirm.
 
 **You will know it worked when** your familiar theme and settings appear in Positron.
-:::
 
-![To import VS Code settings to Positron, run _Preferences: Import Settings_ then click Accept.](images/tutorial-vscode-import-settings.png){fig-alt="A screenshot displaying the Command Palette with Preferences: Import Settings selected and a pop up window asking the user if they would like to save imported VS Code settings."}
+{{< video videos/tutorial-vscode-import-settings.mp4 aria-label="Running Preferences: Import Settings and reviewing the preview" >}}
+
+:::
 
 # Install your extensions from a different marketplace
 
@@ -57,7 +58,7 @@ Extensions work in Positron much as they do in VS Code: open the Extensions view
 
 The one real difference is where the extensions come from. Positron does not use the Microsoft Visual Studio Marketplace. Microsoft reserves that marketplace for their proprietary VS Code builds. Instead, Positron installs extensions from [Posit Public Package Manager](https://p3m.dev), which serves the same catalog as [Open VSX](https://open-vsx.org/), the vendor-neutral, open source marketplace for VS Code. Here, you will find over 10,000 extensions, including those published by data science software companies such as SAS, Snowflake, and Databricks. The extensions you will not find are the ones built with proprietary Microsoft code and licensed only for use inside the VS Code product from Microsoft.
 
-Here is some more good news: you do not need the Microsoft Python and Jupyter extensions you rely on in VS Code. Positron provides their functionality natively, with no setup. Out of the box you already have:
+Here is some more good news: the Microsoft Python and Jupyter extensions you rely on in VS Code are not needed in Positron. Positron provides their functionality natively, with no setup. Out of the box you already have:
 
 | In Positron | In VS Code |
 |---|---|
@@ -84,7 +85,7 @@ If an extension you rely on is missing, it might not be published to Open VSX. Y
 
 In the last tutorial you did everything inside notebook cells. That works well for the analysis you want to keep. But often you just want to poke at your data: check the shape of a data frame, test whether a line of code runs, or try an idea you will throw away.
 
-In VS Code you can open a Python read-eval-print loop (REPL) in the Terminal or spin up an interactive window for this. Positron gives you the **Console**: a persistent, interactive Python session that is a first-class part of the IDE.
+In VS Code you can open a Python REPL in the Terminal or spin up an interactive window for this. Positron gives you the **Console**: a persistent, interactive Python session that is a first-class part of the IDE.
 
 The Console is more than a terminal REPL. Because Positron runs the interpreter as a live session, the Console offers code completion, syntax highlighting, and, most importantly, it drives the Variables and Plots panes you will meet next. It also knows your data at runtime: it can complete your data frame's column names, not just your variable names.
 
@@ -98,13 +99,13 @@ mpg.shape
 
 **You will know it worked when** the Console prints the shape of the data frame, and `mpg` appears in the Variables pane, without you adding a cell to your notebook.
 
-:::
+{{< video videos/tutorial-vscode-variables.mp4 aria-label="Saving an object in the Console and watching it appear in the Variables pane." >}}
 
-![Running commands in the Console.](images/tutorial-vscode-console.png){fig-alt="A screenshot that shows code typed into the Console pane."}
+:::
 
 ## Check your code against another environment
 
-Positron lets you run several Console sessions at once, each on a different Python version or environment. That makes it simple to answer a common question: will the code in my cell also run somewhere else?
+Positron lets you run **several Console sessions at once**, each on a different Python version or environment. That makes it simple to answer a common question: will the code in my cell also run somewhere else?
 
 Say you want to confirm your analysis works on a different Python version, or in a coworker's environment. Open a second Console session on that interpreter and run the same code. Both sessions stay open, and the **Interpreter picker** in the top right shows which one is active.
 
@@ -120,7 +121,7 @@ Because the interpreter runs separately from the IDE, a crash in Python does not
 
 # Explore data without writing throwaway code
 
-The Console feeds a set of data science panes that VS Code does not provide natively. You met two of them in the last tutorial. Here they are together:
+The Console feeds a set of data science panes that VS Code does not provide natively. You met two of them in the last tutorial; here they are together:
 
 - The **Variables pane** lists every object in your active session, with its type and value. You saw `mpg` appear there a moment ago.
 - The **Data Explorer** opens any data frame in a sortable, filterable grid with per-column summary statistics. Its filters are ephemeral, so you can explore without changing your code, then click **Convert to Code** when you want to keep a step.
@@ -136,15 +137,14 @@ view mpg
 
 **You will know it worked when** `mpg` opens in a grid. Sort a column by clicking its header, then open the summary panel to see its distribution.
 
+{{< video videos/tutorial-vscode-data-explorer.mp4 aria-label="Opening the Data Explorer with view and sorting a column." >}}
 :::
-
-![Run `view` to view a table in the Data Explorer.](images/tutorial-vscode-data-explorer.png){fig-alt="A screenshot displaying the mpg data set in the Data Explorer and the line `view mpg` in the Console pane."}
 
 You can also open the Data Explorer by clicking the {{< fa table-cells >}} next to `mpg` in the Variables pane.
 
 # Your notebook, upgraded
 
-You might have noticed the notebook in the last tutorial looked a little different from the one in VS Code. That is because Positron uses an enhanced notebook editor built for data science. It comes with notebook-aware AI assistance and is synchronized with the Variables, Plots, Help, History, and Data Explorer panes you just used.
+You may have noticed the notebook in the last tutorial looked a little different from the one in VS Code. That is because Positron uses an enhanced notebook editor built for data science. It comes with notebook-aware AI assistance and is synchronized with the Variables, Plots, Help, History, and Data Explorer panes you just used.
 
 If you prefer the editor you know from VS Code, Positron still includes it as the [Legacy Notebook Editor](legacy-notebook-editor.qmd), and you can switch between the two.
 

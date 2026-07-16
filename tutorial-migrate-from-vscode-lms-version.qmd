@@ -172,6 +172,9 @@ Run _Authentication: Configure Language Model Providers_ from the Command Palett
 **You will know it worked when** Posit Assistant is connected and you can start a chat.
 :::
 
+![You can configure Posit Assistant to work with many model providers, including Github Copilot.](images/tutorial-vscode-copilot.png){fig-alt="The Configure Language Model Providers window." width=600}
+
+
 ::: {.callout-note}
 GitHub Copilot is a preview provider. For account requirements and other providers, see [Posit Assistant](assistant.qmd) and [Language Model Providers](assistant-providers.qmd).
 :::

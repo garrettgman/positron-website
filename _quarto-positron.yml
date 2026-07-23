@@ -7,7 +7,6 @@ website:
   open-graph: true
   bread-crumbs: true
   page-navigation: true
-  llms-txt: true
   favicon: "images/favicon.svg"
   image: "images/positron-social.png"
   search:
@@ -102,29 +101,33 @@ website:
             - command-palette.qmd
             - action-bars.qmd
             - help-pane.qmd
-        - section: "AI Tools"
+        - section: "AI Features"
+          href: ai-features.qmd
           contents:
-            - section: "Assistant"
-              href: assistant.qmd
-              contents:
-              - text: "Overview"
-                href: assistant.qmd
-              - assistant-getting-started.qmd
-              - assistant-providers.qmd
-              - section: "Chat"
-                href: assistant-chat.qmd
-                contents:
-                  - text: "Overview"
-                    href: assistant-chat.qmd
-                  - href: assistant-chat-agents.qmd
-                  - href: assistant-chat-context.qmd
-                  - href: assistant-chat-commands-participants.qmd
-                  - href: assistant-chat-instructions.qmd
-              - assistant-completions.qmd
-              - assistant-troubleshooting.qmd
-              - assistant-tips.qmd
+          - assistant-getting-started.qmd
+          - section: "Providers"
+            href: assistant-providers.qmd
+            contents:
               - assistant-provider-info.qmd
-            - databot.qmd
+          - text: "Posit Assistant"
+            href: assistant.qmd
+          - assistant-completions.qmd
+          - ai-configuration.qmd
+          - section: "Positron Assistant (deprecated)"
+            contents:
+            - section: "Chat"
+              href: assistant-chat.qmd
+              contents:
+                - text: "Overview"
+                  href: assistant-chat.qmd
+                - href: assistant-chat-agents.qmd
+                - href: assistant-chat-context.qmd
+                - href: assistant-chat-commands-participants.qmd
+                - href: assistant-chat-instructions.qmd
+            - assistant-troubleshooting.qmd
+            - assistant-tips.qmd
+          - text: "Databot (deprecated)"
+            href: databot.qmd
         - section: "Language Guides"
           href: language-guides.qmd
           contents:
@@ -211,8 +214,8 @@ website:
           href: tutorials.qmd
         - tutorial-get-started-ipynb.qmd
         - tutorial-get-started-quarto.qmd
-        - tutorial-migrate-from-RStudio.qmd
         - tutorial-migrate-from-vscode.qmd
+        - tutorial-migrate-from-RStudio.qmd
     - title: "Help"
       style: "docked"
       contents:

@@ -9,8 +9,12 @@
 /env/
 /_site/
 /_site-workbench/
+/_site-dailies/
 /.venv/
 /.luarc.json
 
 **/*.quarto_ipynb
 __pycache__/
+
+# Local Netlify folder
+.netlify

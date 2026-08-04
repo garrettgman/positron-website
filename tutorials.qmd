@@ -26,6 +26,11 @@ listing:
         icon: "bi-luggage"
         link: "tutorial-migrate-from-RStudio.qmd"
         columns: 2
+      - title: "Collaborate with AI on a Python analysis"
+        description: "Use Posit Assistant to explore Excel data, build a Python notebook, and turn it into a Quarto dashboard."
+        icon: "bi-robot"
+        link: "tutorial-ai-notebooks.qmd"
+        columns: 2
 ---
 
 Learn how to get the most out of Positron.

@@ -46,9 +46,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-7f3c135505f33e53fe344bb8386717ef.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d9b94bce6a9f9753cbd3274b88b79024.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/videojs/video.min.js"></script>
-<link href="site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a8d28592f0d0500d0f95d66d5745551e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/kbd/kbd.js"></script>
 <link href="site_libs/quarto-contrib/kbd/kbd.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
@@ -856,7 +854,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#follow-assistant" id="toc-follow-assistant" class="nav-link" data-scroll-target="#follow-assistant">Follow assistant</a></li>
   </ul></li>
   <li><a href="#customization-settings" id="toc-customization-settings" class="nav-link" data-scroll-target="#customization-settings">Customization &amp; settings</a></li>
-  <li><a href="#share-your-feedback" id="toc-share-your-feedback" class="nav-link" data-scroll-target="#share-your-feedback">Share your feedback</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/posit-dev/positron-website/edit/main/positron-notebook-editor.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/posit-dev/positron-website/blob/main/positron-notebook-editor.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/posit-dev/positron/issues/" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -897,7 +894,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The Positron Notebook Editor is the default editor for Jupyter (<code>.ipynb</code>) files. We are actively working on improving the notebook experience in Positron and want to hear from you! Share your thoughts on <a href="https://github.com/posit-dev/positron/discussions/10047">this Github discussion</a> or <a href="https://scheduler.zoom.us/cindy-tong/improving-the-positron-notebook-experience">schedule a call</a> with our product and engineering team.</p>
+<p>The Positron Notebook Editor is the default editor for Jupyter (<code>.ipynb</code>) files.</p>
 </div>
 </div>
 <p>The Positron Notebook Editor provides a familiar notebook experience for Jupyter (<code>.ipynb</code>) files. IDE features work out of the box in notebooks, including AI assistance, data exploration, and debugging.</p>
@@ -966,7 +963,7 @@ Note
 <li><strong>Transparent</strong>: You can inspect and control the specific context the Assistant is using.</li>
 <li><strong>Collaborative</strong>: Use <a href="#follow-assistant">Follow Assistant</a> to automatically scroll and highlight cells as they are edited.</li>
 </ul>
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title="" aria-label="Using Positron Assistant to generate AI-powered suggestions and edits in a notebook"><source src="videos/notebook-ai-quick-actions.mp4"></video></div>
+<div class="quarto-video"><video controls="" playsinline="" preload="none" poster="https://cdn.posit.co/positron/releases/videos/notebook-ai-quick-actions-poster.jpg" aria-label="Using Positron Assistant to generate AI-powered suggestions and edits in a notebook"><source src="https://cdn.posit.co/positron/releases/videos/notebook-ai-quick-actions.mp4" type="video/mp4"></video></div>
 <section id="enable-posit-assistant" class="level3">
 <h3 class="anchored" data-anchor-id="enable-posit-assistant">Enable Posit Assistant</h3>
 <p>To use the integrated notebook AI features, first configure a language model provider. See the <a href="./assistant-getting-started.html">Getting Started</a> guide for more details. We recommend using Anthropic for the best experience.</p>
@@ -1002,7 +999,7 @@ Note
 <li><strong>Fix:</strong> Assistant diagnoses the error and suggests a corrected version of your code.</li>
 <li><strong>Explain:</strong> Assistant describes what your code does, analyzes the error, and suggests possible solutions, without editing your notebook.</li>
 </ul>
-<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title="" aria-label="Using Fix and Explain on a notebook cell error"><source src="videos/notebook-fix-error.mp4"></video></div>
+<div class="quarto-video"><video controls="" playsinline="" preload="none" poster="https://cdn.posit.co/positron/releases/videos/notebook-fix-error-poster.jpg" aria-label="Using Fix and Explain on a notebook cell error"><source src="https://cdn.posit.co/positron/releases/videos/notebook-fix-error.mp4" type="video/mp4"></video></div>
 <p>The main button starts a new chat with the error attached as context. Use the dropdown arrow next to it to send the error to your current chat instead.</p>
 </section>
 <section id="ghost-cell-suggestions-experimental" class="level3">
@@ -1058,17 +1055,9 @@ Note
 <li><a href="positron://settings/positron.assistant.notebook.ghostCellSuggestions.maxVariables"><code>positron.assistant.notebook.ghostCellSuggestions.maxVariables</code></a>: Maximum number of session variables to include in ghost cell suggestion context. Variables are prioritized by relevance (DataFrames and tables first, then collections and scalars). Set to 0 to disable variable context.</li>
 <li><a href="positron://settings/positron.assistant.notebook.ghostCellSuggestions.model"><code>positron.assistant.notebook.ghostCellSuggestions.model</code></a>: Model patterns for ghost cell suggestions. Patterns are tried in order until a match is found (case-insensitive partial matching). Falls back to the current chat session model, then the provider’s model, then the first available model.</li>
 </ul>
-</section>
-</section>
-<section id="share-your-feedback" class="level2">
-<h2 class="anchored" data-anchor-id="share-your-feedback">Share your feedback</h2>
-<p>We’d love your feedback. Please <a href="https://scheduler.zoom.us/cindy-tong/improving-the-positron-notebook-experience">book time to chat with us</a> or:</p>
-<ol type="1">
-<li><p><a href="https://github.com/posit-dev/positron/issues">File issues</a> for any bugs or improvements you want to see.</p></li>
-<li><p>Upvote on <a href="https://github.com/posit-dev/positron/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22area%3A%20notebooks-jupyter%22">features</a> you want to see next.</p></li>
-</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1520,8 +1509,6 @@ Note
     </div>
   </div>
 </footer>
-<script>videojs(video_shortcode_videojs_video1);</script>
-<script>videojs(video_shortcode_videojs_video2);</script>
 <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;

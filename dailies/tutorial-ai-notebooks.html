@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.23">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -68,20 +71,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./tutorial-migrate-from-vscode.html" rel="next">
-<link href="./tutorial-get-started-quarto.html" rel="prev">
+<link href="./tutorial-migrate-from-RStudio.html" rel="prev">
 <link href="./images/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f3c135505f33e53fe344bb8386717ef.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea75d63aa43f8f8469d06b2d8e4581c1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a8d28592f0d0500d0f95d66d5745551e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-76d21a2efd66f12f3676d5b1fe6b0bb6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/kbd/kbd.js"></script>
 <link href="site_libs/quarto-contrib/kbd/kbd.css" rel="stylesheet">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
@@ -119,11 +120,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="Collaborate with AI on a Python analysis – Positron">
 <meta property="og:description" content="Use Posit Assistant to explore Excel data, build a Python notebook, and turn it into a Quarto dashboard.">
-<meta property="og:image" content="https://positron.posit.co/dailies/images/positron-notebook-editor-kernel-selector.png">
+<meta property="og:image" content="https://positron.posit.co/dailies/images/tutorial-python-ai-git.png">
 <meta property="og:site_name" content="Positron">
-<meta property="og:image:alt" content="Notebook Editor action bar with the kernel selector dropdown highlighted, showing a Python virtual environment selected.">
-<meta property="og:image:height" content="1400">
-<meta property="og:image:width" content="2040">
+<meta property="og:image:alt" content="The Positron IDE displaying the New Folder from Git wizard.">
+<meta property="og:image:height" content="1872">
+<meta property="og:image:width" content="2926">
+<meta name="twitter:title" content="Collaborate with AI on a Python analysis – Positron">
+<meta name="twitter:description" content="Use Posit Assistant to explore Excel data, build a Python notebook, and turn it into a Quarto dashboard.">
+<meta name="twitter:image" content="https://positron.posit.co/dailies/images/tutorial-python-ai-git.png">
+<meta name="twitter:image:alt" content="The Positron IDE displaying the New Folder from Git wizard.">
+<meta name="twitter:image-height" content="1872">
+<meta name="twitter:image-width" content="2926">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar docked nav-fixed quarto-light">
@@ -153,6 +161,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Guides</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./release-notes.html"> 
+<span class="menu-text">Release Notes</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link active" href="./tutorials.html" aria-current="page"> 
 <span class="menu-text">Tutorials</span></a>
   </li>  
@@ -170,24 +182,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
         <li>
+    <a class="dropdown-item" href="https://opensource.posit.co/blog/q/positron/" target="_blank"><i class="bi bi-journal-text" role="img">
+</i> 
+ <span class="dropdown-text">Blog</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="https://posit.co/positron-updates-signup/" target="_blank"><i class="bi bi-envelope" role="img">
 </i> 
  <span class="dropdown-text">Sign up for updates</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://opensource.posit.co/blog/q/positron/" target="_blank"><i class="bi bi-code-slash" role="img">
+    <a class="dropdown-item" href="https://www.linkedin.com/showcase/positron-ide/" target="_blank"><i class="bi bi-linkedin" role="img">
 </i> 
- <span class="dropdown-text">Positron at Posit Open Source</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://posit.co/blog/?post_tag=positron" target="_blank"><i class="bi bi-box-arrow-up-right" role="img">
-</i> 
- <span class="dropdown-text">Company Blog Posts</span></a>
+ <span class="dropdown-text">LinkedIn</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://posit.co/events/?search=positron&amp;poststatus=all" target="_blank"><i class="bi bi-calendar-event" role="img">
 </i> 
  <span class="dropdown-text">Events</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://posit.co/products/" target="_blank"><i class="bi bi-laptop" role="img">
+</i> 
+ <span class="dropdown-text">More Posit products</span></a>
   </li>  
     </ul>
   </li>
@@ -223,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav>
   <div id="quarto-announcement" data-announcement-id="687d7ef531e974cef1bf7d0f11614fac" class="alert alert-danger hidden"><i class="bi bi-cone-striped quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p>You are viewing the development version of Positron documentation for the dailies (2026.08.0). Some features described here are not yet available in the latest regular release. <a href="https://positron.posit.co/">Go to the released documentation</a>.</p>
+<p>You are viewing the development version of Positron documentation for the dailies (2026.09.0). Some features described here are not yet available in the latest regular release. <a href="https://positron.posit.co/">Go to the released documentation</a>.</p>
 </div></div>
 </header>
 <!-- content -->
@@ -252,12 +269,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial-ai-notebooks.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Collaborate with AI on a Python analysis</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./tutorial-migrate-from-vscode.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Migrate from VS Code to Positron</span></a>
   </div>
@@ -266,6 +277,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./tutorial-migrate-from-RStudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Migrate from RStudio to Positron</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial-ai-notebooks.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Collaborate with AI on a Python analysis</span></a>
   </div>
 </li>
     </ul>
@@ -332,22 +349,33 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Is this the right tutorial to start with? It picks up where <a href="./tutorial-get-started-ipynb.html">First data analysis with Python in a Jupyter Notebook</a> and <a href="./tutorial-migrate-from-vscode.html">Migrate from VS Code to Positron</a> leave off. If you have not worked through those, start there. This tutorial assumes you already know how to install Positron, create a Python environment, and run a notebook cell.</p>
+<p>Is this the right tutorial to start with? It picks up where <a href="./tutorial-get-started-ipynb.html">First data analysis with Python in a Jupyter Notebook</a> and <a href="./tutorial-migrate-from-vscode.html">Migrate from VS Code to Positron</a> leave off. If you have not worked through those, start there. This tutorial assumes you already know how to:</p>
+<ol type="1">
+<li>Install Positron</li>
+<li>Use the Command Palette</li>
+<li>Run a notebook cell</li>
+</ol>
 </div>
 </div>
-<p>Positron is a free, source-available IDE for data science, built on the same open source core as VS Code. In the earlier tutorials you built a notebook by hand. In this one you keep your hands on the same tools. You also bring an AI assistant alongside you to write, extend, and reshape the analysis, while you stay in control of the result.</p>
+<p>Positron is a free, source-available IDE for data science, built on the same open source core as VS Code. In the earlier tutorials, you used Positron to build a notebook by hand. In this one, you will bring an AI assistant alongside you to write, extend, and improve an analysis, while you stay in control of the result.</p>
 <p>You will work through a small analysis from raw data to a published dashboard, using the AI features you might reach for every day:</p>
 <ul>
 <li>Posit Assistant, the AI assistant built into Positron</li>
+<li>The <code>/notebook</code> and <code>/report</code> commands, which turn a conversation with Posit Assistant into a Jupyter notebook or a Quarto document</li>
 <li>Notebook-aware AI, including the Notebook Assistant panel and one-click cell fixes</li>
-<li>Ghost cell suggestions, which predict the next cell after you run one</li>
-<li>The <code>/notebook</code> and <code>/report</code> commands, which turn a conversation into a Jupyter notebook or a Quarto document</li>
+<li>Ghost cell suggestions, which suggest the next cell for your notebook</li>
 </ul>
 <p>The whole path runs on one dataset: a spreadsheet of retail orders that you will aggregate into quarterly sales, visualize, and ship as an interactive dashboard.</p>
 <section id="open-the-workshop-project" class="level2">
 <h2 class="anchored" data-anchor-id="open-the-workshop-project">Open the workshop project</h2>
-<p>The example files live in a GitHub repository. Cloning it gives you the data and a <code>requirements.txt</code> that lists the packages the analysis needs.</p>
-<p>You can clone a repository without leaving the editor. The <strong>New Folder from Git</strong> option, available on the Welcome screen or from the Command Palette, clones a remote repository and opens it as your project.</p>
+<p>The dataset you will use lives in a GitHub repository, alongside a <code>requirements.txt</code> file that lists the packages you will need.</p>
+<p>You can clone a repository without leaving Positron. The <strong>New Folder from Git</strong> option, available on the Welcome screen or from the Command Palette, clones a remote repository and opens it as your project.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/tutorial-python-ai-git.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="The New Folder from Git helper in Positron"><img src="images/tutorial-python-ai-git.png" class="img-fluid figure-img" alt="The Positron IDE displaying the New Folder from Git wizard."></a></p>
+<figcaption>The New Folder from Git helper in Positron</figcaption>
+</figure>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Try it now">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -358,24 +386,29 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Open the Command Palette with <kbd title="linux: Ctrl-Shift-P, mac: Command-Shift-P, windows: Ctrl-Shift-P" aria-hidden="true" data-linux="Ctrl-Shift-P" data-mac="Command-Shift-P" data-windows="Ctrl-Shift-P"></kbd><span class="visually-hidden"></span>, run <em>Workspaces: New Folder from Git</em>, and paste the repository URL:</p>
+<p>Open the Command Palette with <kbd title="linux: Ctrl-Shift-P, mac: Command-Shift-P, windows: Ctrl-Shift-P" aria-hidden="true" data-linux="Ctrl-Shift-P" data-mac="Command-Shift-P" data-windows="Ctrl-Shift-P"></kbd><span class="visually-hidden"></span>, run <em>Workspaces: New Folder from Git</em>, and paste the repository URL when prompted:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>https://github.com/posit-dev/positron-notebook-workshop</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Choose a location, then open the cloned folder when Positron offers to.</p>
 <p><strong>You will know it worked when</strong> the <strong>Explorer</strong> in the left sidebar shows the project files, including a <code>data</code> folder and <code>requirements.txt</code>.</p>
-<!-- SME: short screen capture of New Folder from Git cloning the workshop repo and opening it -->
 </div>
 </div>
-<p>When the project opens, Positron detects the <code>requirements.txt</code> and offers, through a notification, to create an environment and install the packages for you. You can dismiss that notification for now. We will set the environment up deliberately in a later step so you can see what it does.</p>
+<p>When the project opens, Positron detects the <code>requirements.txt</code> and offers, through a notification, to create an environment and install the packages for you. For this tutorial, dismiss that notification by clicking <strong>Not now</strong> in the bottom right. We will set the environment up deliberately in a later step so you can see what it does.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/tutorial-python-ai-notification.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Positron’s notification offering to create a virtual environment from requirements.txt"><img src="images/tutorial-python-ai-notification.png" class="img-fluid figure-img" alt="The new Positron window displaying a notification in the bottom right corner."></a></p>
+<figcaption>Positron’s notification offering to create a virtual environment from requirements.txt</figcaption>
+</figure>
+</div>
 </section>
 <section id="explore-the-data-in-the-data-explorer" class="level2">
 <h2 class="anchored" data-anchor-id="explore-the-data-in-the-data-explorer">Explore the data in the Data Explorer</h2>
-<p>Before setting a goal, look at what you have. The dataset is an Excel file, <code>data/retail_sales.xlsx</code>. You can open Excel files directly in the Data Explorer and inspect them without writing any code or converting the file first.</p>
-<p>The Data Explorer is a sortable, filterable grid with per-column summary statistics. It gives you four ways to get your bearings in an unfamiliar table:</p>
+<p>Let’s take a look at the data before setting a goal. The dataset is an Excel file, <code>data/retail_sales.xlsx</code>. You can open Excel files directly in the Positron Data Explorer and inspect them without writing any code or converting the file first.</p>
+<p>The Data Explorer is a sortable, filterable table with per-column summary statistics. It gives you four ways to get your bearings in an unfamiliar table:</p>
 <ul>
-<li>Scroll through the rows to see the grain of the data.</li>
-<li>Pin a column so it stays in view while you scroll sideways.</li>
-<li>Sort a column by clicking its header.</li>
-<li>Filter to a subset with the filter controls, without changing the underlying file.</li>
+<li>Scroll through the rows or columns to see cell values. Pin a row or column so it stays in view while you scroll.</li>
+<li>Sort on a column by clicking its header.</li>
+<li>Filter to a subset with the filter controls in the table header.</li>
+<li>View summary statistics for each column in the expandable sidebar.</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled" title="Try it now">
 <div class="callout-header d-flex align-content-center">
@@ -387,26 +420,30 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In the <strong>Explorer</strong>, open <code>data/retail_sales.xlsx</code>. It opens in the Data Explorer as a grid of retail orders.</p>
+<p>In the <strong>Explorer</strong>, double-click <code>data/retail_sales.xlsx</code>. It opens in the Data Explorer as a table of retail orders.</p>
 <ol type="1">
 <li>Scroll down to get a feel for the roughly 9,800 rows.</li>
 <li>Pin the <code>order_id</code> column so it stays visible.</li>
-<li>Sort by <code>sales</code> to find the largest single order.</li>
-<li>Open a column’s summary to see its distribution.</li>
+<li>Sort by <code>sales</code> to find the largest single order. On which date did it occur?</li>
 </ol>
 <p><strong>You will know it worked when</strong> you can name the two columns this analysis will need: <code>order_date</code> and <code>sales</code>.</p>
-<!-- SME: screenshot of retail_sales.xlsx open in the Data Explorer with a column pinned and sorted -->
 </div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/tutorial-python-ai-explorer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="retail_sales.xlsx open in the Data Explorer with columns pinned and sorted"><img src="images/tutorial-python-ai-explorer.png" class="img-fluid figure-img" alt="The Positron Data Explorer showing a table of retail orders, with the order_id column pinned and the rows sorted by the sales column." width="600"></a></p>
+<figcaption><code>retail_sales.xlsx</code> open in the Data Explorer with columns pinned and sorted</figcaption>
+</figure>
 </div>
 </section>
 <section id="set-a-goal" class="level2">
 <h2 class="anchored" data-anchor-id="set-a-goal">Set a goal</h2>
 <p>Now that you know the data, here is the goal: aggregate the orders into total sales per quarter, then visualize the trend.</p>
-<p>You can do this by hand in the Data Explorer, but a one-off exploration is hard to rerun and hard to share. To keep a reproducible record, you will express the work as Python code. That means the next step is to set Positron up to run Python for this project.</p>
+<p>To keep a reproducible record, you will express the work as Python code. That means the next step is to set Positron up to run Python for this project.</p>
 </section>
 <section id="set-up-a-reproducible-python-environment" class="level2">
 <h2 class="anchored" data-anchor-id="set-up-a-reproducible-python-environment">Set up a reproducible Python environment</h2>
-<p>A virtual environment is a self-contained Python setup with its own packages. You will add one to this project so its dependencies stay separate from everything else on your computer. The <code>requirements.txt</code> in the workshop repository pins the exact versions the analysis needs, including the pandas, openpyxl, itables, and plotnine packages.</p>
+<p>A virtual environment is a self-contained Python setup with its own packages. Let’s add one to this project so its dependencies stay separate from everything else on your computer. The <code>requirements.txt</code> in the workshop repository pins the exact versions the analysis needs, including the pandas, openpyxl, itables, and plotnine packages.</p>
 <p>You saw Positron offer to build this environment when the project opened. You can accept that notification anytime and it does the same thing as the steps below. Here you will run it from the Command Palette so you can see each choice.</p>
 <p>The <em>Python: Create Environment</em> command creates a virtual environment and, when it finds a <code>requirements.txt</code>, installs the packages listed there.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Try it now">
@@ -426,8 +463,13 @@ Note
 <li>When Positron asks which dependencies to install, select <code>requirements.txt</code>.</li>
 </ol>
 <p><strong>You will know it worked when</strong> a <code>.venv</code> folder appears in the <strong>Explorer</strong> and the packages from <code>requirements.txt</code> install without errors. The new environment also becomes the active interpreter, shown in the interpreter picker in the top right.</p>
-<!-- SME: screen capture of Python: Create Environment installing from requirements.txt -->
 </div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/tutorial-python-ai-environment.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="The new virtual environment shown as the active interpreter in the interpreter picker"><img src="images/tutorial-python-ai-environment.png" class="img-fluid figure-img" alt="Positron displaying the new environment as the active interpreter, shown in the interpreter picker in the top right."></a></p>
+<figcaption>The new virtual environment shown as the active interpreter in the interpreter picker</figcaption>
+</figure>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -445,10 +487,22 @@ Note
 </section>
 <section id="configure-a-language-model-provider" class="level2">
 <h2 class="anchored" data-anchor-id="configure-a-language-model-provider">Configure a language model provider</h2>
-<p>You are set up to run Python reproducibly. Now bring in the assistant that will help you write it.</p>
-<p>Posit Assistant is the AI assistant built into Positron. It does not include a language model of its own. Instead, it sends your prompt, along with context such as your open files and your session’s data, to a language model provider that you choose and sign in to. The provider runs the model and returns the response, which Positron shows in the chat. Positron lists every provider by default, but none is active until you authenticate with it.</p>
-<p>Because providers differ in what account and credentials they need, the steps below are deliberately general. Use whichever provider you already have access to. If you do not have one, <a href="./assistant-providers.html#posit-ai">Posit AI</a> is the most direct way to get started. You create an account at <a href="https://posit.ai/">posit.ai</a> and sign in through your browser, with no API keys to manage.</p>
-<!-- SME: confirm the current Posit AI free-trial / pricing wording to mention here for students who want a low-cost way to try it. -->
+<p>You are set up to run Python reproducibly. Now let’s set up Positron to run a large language model (LLM).</p>
+<p>Posit Assistant is the AI assistant built into Positron. It does not include a language model of its own. Instead, it sends your prompt, along with context such as your open files and your session’s data, to a language model provider that you choose and sign in to. The provider runs the model and returns the response, which Posit Assistant shows in the chat. You can open Posit Assistant by clicking its icon in the activity bar or by running <em>View: Show Posit Assistant</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/tutorial-python-ai-assistant.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Posit Assistant open in the left sidebar"><img src="images/tutorial-python-ai-assistant.png" class="img-fluid figure-img" alt="Positron with Posit Assistant loaded in the left sidebar."></a></p>
+<figcaption>Posit Assistant open in the left sidebar</figcaption>
+</figure>
+</div>
+<p>To use Posit Assistant, you must first log in to a model provider with <em>Authentication: Configure Language Model Providers</em>. Posit Assistant lists every provider by default, but none is active until you authenticate with it.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/tutorial-python-ai-configure-model.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="The Configure Language Model Providers window"><img src="images/tutorial-python-ai-configure-model.png" class="img-fluid figure-img" alt="The Posit Assistant Configure Language Model Providers window." width="500"></a></p>
+<figcaption>The Configure Language Model Providers window</figcaption>
+</figure>
+</div>
+<p>Because providers differ in what account and credentials they need, the steps below are deliberately general. Use whichever provider you already have access to. If you do not have one, <a href="./assistant-providers.html#posit-ai">Posit AI</a> is the most direct way to get started. You can start a free trial at <a href="https://posit.ai/">posit.ai</a> and sign in through your browser, with no API keys to manage.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Try it now">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -467,13 +521,13 @@ Note
 <p><strong>You will know it worked when</strong> the provider shows as connected and you can open a chat with <em>View: Show Posit Assistant</em>.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -483,8 +537,20 @@ Tip
 </section>
 <section id="ask-posit-assistant-to-write-the-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="ask-posit-assistant-to-write-the-analysis">Ask Posit Assistant to write the analysis</h2>
-<p>With a provider connected, describe the analysis in plain language and let Posit Assistant draft the code. A good request names the file, the packages, and the outputs you want, so the assistant has enough to work with.</p>
+<p>With a provider connected, describe the analysis in plain language and let Posit Assistant draft the code. A good request names three things:</p>
+<ul>
+<li>the files to work with</li>
+<li>the packages to use</li>
+<li>the outputs you want</li>
+</ul>
+<p>so the assistant knows what to do and how to do it.</p>
 <p>Before you send the request, predict what a correct answer looks like. You want the orders grouped by quarter, one row per quarter, and a chart with a bar and a line over the same quarterly totals. Holding that picture in mind makes it easy to judge whether the generated code did the right thing.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/tutorial-python-ai-chart.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="The quarterly sales chart you will ask Posit Assistant to build"><img src="images/tutorial-python-ai-chart.png" class="img-fluid figure-img" alt="A bar chart showing quarterly sales over time, with a superimposed line chart." width="500"></a></p>
+<figcaption>The quarterly sales chart you will ask Posit Assistant to build</figcaption>
+</figure>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Try it now">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -504,8 +570,14 @@ Tip
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>Run the code and show me the results.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Posit Assistant proposes code and, with your permission, runs it in your environment. Review each step before you approve it.</p>
 <p><strong>You will know it worked when</strong> you see an interactive table of quarterly totals and a bar-and-line chart of sales over time.</p>
-<!-- SME: screen capture of Posit Assistant generating and running the analysis, ending with the itables table and plotnine chart -->
 </div>
+</div>
+<p>Before it runs anything, Posit Assistant asks for permission. You can <strong>Accept</strong>, <strong>Decline</strong>, or reply with written instructions to adjust what it does.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/tutorial-python-ai-permission.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Posit Assistant asking permission to run code"><img src="images/tutorial-python-ai-permission.png" class="img-fluid figure-img" alt="A chat with Posit Assistant asking permission to run lines of code." width="400"></a></p>
+<figcaption>Posit Assistant asking permission to run code</figcaption>
+</figure>
 </div>
 <p>Your generated code will vary, but it will resemble this:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -524,11 +596,17 @@ Tip
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_col(fill<span class="op">=</span><span class="st">"#447099"</span>)</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> geom_line(color<span class="op">=</span><span class="st">"#EE6331"</span>)</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a> <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"Quarterly retail sales"</span>, x<span class="op">=</span><span class="st">"Quarter"</span>, y<span class="op">=</span><span class="st">"Sales"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If a result looks off, say so in the same conversation. Posit Assistant keeps the context and revises, so you can steer it toward the picture you predicted rather than starting over.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/tutorial-python-ai-results.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="The interactive table and chart Posit Assistant generated"><img src="images/tutorial-python-ai-results.png" class="img-fluid figure-img" alt="The Positron IDE showing a chart in the chat and a table in the viewer sidebar."></a></p>
+<figcaption>The interactive table and chart Posit Assistant generated</figcaption>
+</figure>
+</div>
+<p>If a result looks off, say so in the same conversation. Posit Assistant keeps the context as it makes revisions, so you can steer it toward the picture you predicted rather than starting over.</p>
 </section>
 <section id="export-the-conversation-as-a-notebook" class="level2">
 <h2 class="anchored" data-anchor-id="export-the-conversation-as-a-notebook">Export the conversation as a notebook</h2>
-<p>The analysis works, but right now it lives in a chat. To keep it as a reproducible artifact, export the conversation as a Jupyter notebook with the <code>/notebook</code> command. It collects the code from your conversation into a <code>.ipynb</code> file that you can rerun, edit, and commit.</p>
+<p>The analysis works, but right now it lives in a chat. To save it as a reproducible artifact, type <code>/notebook</code> into the chat to export the conversation as a Jupyter notebook. Posit Assistant collects the code from your conversation into a <code>.ipynb</code> file that you can rerun, edit, and commit.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Try it now">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -543,34 +621,28 @@ Tip
 <p><strong>You will know it worked when</strong> a new <code>.ipynb</code> file opens with your analysis laid out in cells.</p>
 </div>
 </div>
-<p>Check the kernel selector in the notebook’s action bar. The notebook runs on the <code>.venv</code> you created, so it uses the same pinned packages as the rest of the project. That is what makes the exported notebook reproducible rather than tied to whatever Python happened to be active.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/positron-notebook-editor-kernel-selector.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="The kernel selector in the Positron Notebook Editor action bar, showing the project’s virtual environment selected as the kernel."><img src="images/positron-notebook-editor-kernel-selector.png" class="img-fluid figure-img" alt="Notebook Editor action bar with the kernel selector dropdown highlighted, showing a Python virtual environment selected."></a></p>
-<figcaption>The kernel selector in the Positron Notebook Editor action bar, showing the project’s virtual environment selected as the kernel.</figcaption>
+<p><a href="images/tutorial-python-ai-notebook.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="The exported notebook open in the Positron Notebook Editor"><img src="images/tutorial-python-ai-notebook.png" class="img-fluid figure-img" alt="Positron in Notebook Layout mode with a notebook open."></a></p>
+<figcaption>The exported notebook open in the Positron Notebook Editor</figcaption>
 </figure>
 </div>
+<p>Check the kernel selector in the notebook’s action bar. The notebook runs on the <code>.venv</code> you created, so it uses the same pinned packages as the rest of the project. That is what makes the exported notebook reproducible rather than tied to whatever Python happened to be active.</p>
 </section>
 <section id="work-with-ai-inside-the-notebook" class="level2">
 <h2 class="anchored" data-anchor-id="work-with-ai-inside-the-notebook">Work with AI inside the notebook</h2>
-<p>The Positron Notebook Editor is notebook-aware: Posit Assistant can see your cells, their outputs, and the order you ran them. That context powers a set of AI features you can reach without leaving the notebook. For the best view of them, run <em>View: Notebook Layout</em> to arrange the assistant, the notebook, and the Variables pane side by side.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="images/positron-notebook-layout.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="The Positron IDE in Notebook layout, with the assistant chat on the left, the notebook in the center, and the Variables pane on the right."><img src="images/positron-notebook-layout.png" class="img-fluid figure-img" alt="Positron IDE in Notebook layout: Posit Assistant chat pane on the left, Notebook Editor in the center showing code and a bar chart, and the Variables pane on the right."></a></p>
-<figcaption>The Positron IDE in Notebook layout, with the assistant chat on the left, the notebook in the center, and the Variables pane on the right.</figcaption>
-</figure>
-</div>
+<p>Posit Assistant is notebook-aware: Posit Assistant can see your cells, their outputs, and the order you ran them. That context powers a set of AI features you can reach without leaving the notebook. For the best view of them, run <em>View: Notebook Layout</em> to arrange the assistant, the notebook, and the Variables pane side by side, as in the previous screenshot.</p>
 <p>The notebook offers four AI entry points:</p>
 <ul>
-<li>The <strong>Notebook Assistant panel</strong>, opened from the <strong>Assistant</strong> button in the action bar, shows which cells are in context and offers quick actions to explain, fix, or improve the notebook.</li>
+<li>The <strong>Notebook Assistant panel</strong>, opened from the robot icon above the notebook, shows which cells are in context and offers quick actions to explain, fix, or improve the notebook. <strong>Follow Assistant</strong> scrolls the notebook to each cell as Posit Assistant edits it, so you can watch changes land.</li>
 <li><strong>Fix</strong> and <strong>Explain</strong> buttons appear on any cell that errors, sending the failure straight to Posit Assistant.</li>
 <li>Ghost cell suggestions predict the next cell after you run one.</li>
-<li><strong>Follow Assistant</strong> scrolls the notebook to each cell as Posit Assistant edits it, so you can watch changes land.</li>
+<li>Posit Assistant can edit the notebook when prompted from the chat.</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/positron-notebook-assistant-panel.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="The Notebook Assistant panel, showing the cells in context, quick actions to fix, explain, or improve the notebook, and generated suggestions."><img src="images/positron-notebook-assistant-panel.png" class="img-fluid figure-img" alt="Notebook Assistant panel showing context cells, quick actions like Fix, Explain, and Improve, and AI-generated suggestions based on the notebook state."></a></p>
-<figcaption>The Notebook Assistant panel, showing the cells in context, quick actions to fix, explain, or improve the notebook, and generated suggestions.</figcaption>
+<p><a href="images/tutorial-python-ai-notebook-assistant.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="The Notebook Assistant panel, showing context cells, quick actions, and suggestions"><img src="images/tutorial-python-ai-notebook-assistant.png" class="img-fluid figure-img" alt="Notebook Assistant panel showing context cells, quick actions like Fix, Explain, and Improve, and AI-generated suggestions based on the notebook state."></a></p>
+<figcaption>The Notebook Assistant panel, showing context cells, quick actions, and suggestions</figcaption>
 </figure>
 </div>
 <p>The next two sections put two of these to work.</p>
@@ -595,13 +667,24 @@ Tip
 <li>Accept it and rerun the cell.</li>
 </ol>
 <p><strong>You will know it worked when</strong> Posit Assistant identifies the wrong column name, restores <code>"sales"</code>, and the cell runs cleanly.</p>
-<!-- SME: reuse or update videos/notebook-fix-error.mp4 here if it still matches the current Fix/Explain UI -->
 </div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/tutorial-python-ai-explain-error.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Posit Assistant explaining a cell error"><img src="images/tutorial-python-ai-explain-error.png" class="img-fluid figure-img" alt="A Posit Assistant chat that explains the cause of the error seen in the notebook beside it." width="600"></a></p>
+<figcaption>Posit Assistant explaining a cell error</figcaption>
+</figure>
 </div>
 </section>
 <section id="extend-the-notebook-with-a-ghost-cell" class="level2">
 <h2 class="anchored" data-anchor-id="extend-the-notebook-with-a-ghost-cell">Extend the notebook with a ghost cell</h2>
-<p>Ghost cell suggestions predict your next step after you run a cell. A ghost cell appears below the current one with a suggested action you can accept, edit, or dismiss. The notebook proposes where to go next instead of waiting for a blank cell. Ghost cell suggestions are experimental and off by default, so you enable them first.</p>
+<p>Ghost cell suggestions predict your next step after you run the final cell. A ghost cell appears below the current one with a suggested action you can accept, edit, or dismiss. The notebook proposes where to go next instead of waiting for a blank cell. Ghost cell suggestions are experimental and off by default, so you enable them first.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/tutorial-python-ai-ghost-cell.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="A ghost cell shown in grey with a dashed boundary"><img src="images/tutorial-python-ai-ghost-cell.png" class="img-fluid figure-img" alt="A notebook that displays a ghost cell below a regular cell." width="500"></a></p>
+<figcaption>A ghost cell shown in grey with a dashed boundary</figcaption>
+</figure>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Try it now">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -613,20 +696,21 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Set <a href="positron://settings/positron.assistant.notebook.ghostCellSuggestions.enabled"><code>positron.assistant.notebook.ghostCellSuggestions.enabled</code></a> to <code>true</code>.</li>
+<li>Run <em>Preferences: Open User Settings</em>.</li>
+<li>Search for <a href="positron://settings/positron.assistant.notebook.ghostCellSuggestions.enabled"><code>positron.assistant.notebook.ghostCellSuggestions.enabled</code></a> in the settings. Set it to <code>true</code>.</li>
 <li>Run the cell that builds your <code>quarterly</code> table.</li>
 <li>Wait for the ghost cell to appear below it. To trigger it yourself instead, disable <a href="positron://settings/positron.assistant.notebook.ghostCellSuggestions.automatic"><code>positron.assistant.notebook.ghostCellSuggestions.automatic</code></a> and press <kbd title="linux: Ctrl-Shift-G, mac: Command-Shift-G, windows: Ctrl-Shift-G" aria-hidden="true" data-linux="Ctrl-Shift-G" data-mac="Command-Shift-G" data-windows="Ctrl-Shift-G"></kbd><span class="visually-hidden"></span>.</li>
 <li>Accept a suggestion that adds something useful, such as the quarter with the highest sales, or edit it before accepting.</li>
 </ol>
 <p><strong>You will know it worked when</strong> a suggested cell appears in faded text and becomes a real, runnable cell once you accept it.</p>
-<!-- SME: add a video shortcode here (videos/...mp4): screen capture of a ghost cell appearing after running the quarterly aggregation and being accepted -->
 </div>
 </div>
 </section>
 <section id="turn-the-notebook-into-a-quarto-report" class="level2">
 <h2 class="anchored" data-anchor-id="turn-the-notebook-into-a-quarto-report">Turn the notebook into a Quarto report</h2>
-<p>A notebook is a great place to work. When you want to share results as a document, a Quarto report is a better container. It renders the same code and prose to HTML, PDF, Word, and more, so one source can become whatever format your audience needs.</p>
-<p>The <code>/report</code> command creates a Quarto document from your conversation, the same way <code>/notebook</code> creates the Jupyter notebook.</p>
+<p>A notebook is a great place to work, but when you want to share results as a document, a Quarto report is a better container. It can render the same code and prose to HTML, PDF, Word, and more, so one source can become whatever format your audience needs.</p>
+<p>The <code>/report</code> command in Posit Assistant creates a Quarto document from your conversation, the same way <code>/notebook</code> creates the Jupyter notebook.</p>
+<p>If you already have a Jupyter notebook that you want to convert to a Quarto document, you can convert it to Quarto with <em>Notebook: Convert to .qmd</em>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Try it now">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -637,9 +721,16 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Return to your Posit Assistant conversation, type <code>/report</code>, and send it. Posit Assistant writes a Quarto (<code>.qmd</code>) document from the analysis.</p>
-<p><strong>You will know it worked when</strong> a <code>.qmd</code> file opens containing your code and explanatory prose. Render it to preview the report.</p>
+<p>Run <em>Notebook: Convert to .qmd</em> from the Command Palette.</p>
+<p><strong>You will know it worked when</strong> a <code>.qmd</code> file opens containing your code and explanatory prose. Click <strong>Preview</strong> at the top of the file to render an HTML version of the report.</p>
 </div>
+</div>
+<p>You can also convert a notebook to a .qmd with the <strong>Convert to .qmd</strong> menu item.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/tutorial-python-ai-convert-to-qmd.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="The Convert to .qmd item in the notebook menu"><img src="images/tutorial-python-ai-convert-to-qmd.png" class="img-fluid figure-img" alt="The Convert to .qmd item highlighted in the menu of the notebook pane." width="500"></a></p>
+<figcaption>The Convert to .qmd item in the notebook menu</figcaption>
+</figure>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -671,10 +762,15 @@ Note
 <p>With the <code>.qmd</code> open, ask Posit Assistant:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Convert this Quarto document into a dashboard with format: dashboard.</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Use a two-column layout, and add a toggle to switch between light and dark mode.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Then render the dashboard to preview it.</p>
-<p><strong>You will know it worked when</strong> the report renders as a two-column dashboard with a control to switch between light and dark themes.</p>
-<!-- SME: screenshot of the rendered two-column dashboard with the light/dark toggle -->
+<p>When Posit Assistant has finished, press <strong>Preview</strong> to render the dashboard and preview it.</p>
+<p><strong>You will know it worked when</strong> the report renders as a two-column dashboard with a control to switch between light and dark themes. The dashboard appears as an HTML file saved in your project folder.</p>
 </div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/tutorial-python-ai-dashboard.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="The finished dashboard"><img src="images/tutorial-python-ai-dashboard.png" class="img-fluid figure-img" alt="A two-column Quarto dashboard showing a quarterly sales table and a bar-and-line chart of sales over time, with a light and dark mode toggle."></a></p>
+<figcaption>The finished dashboard</figcaption>
+</figure>
 </div>
 </section>
 <section id="publish-your-dashboard" class="level2">
@@ -684,31 +780,17 @@ Note
 <li>Commit and push it with the Git client to store it in a repository like the one you cloned. See <a href="./git.html">Using Git in Positron</a>.</li>
 <li>Publish it to <a href="./publish-to-connect.html">Posit Connect</a> or to Posit Connect Cloud with the Publisher extension, which deploys the rendered dashboard to a server your colleagues can open in a browser.</li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="Try it now">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Try it now
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Open the Git pane, commit your notebook, report, and dashboard, and push them to the workshop repository or a fork of your own.</p>
-<p><strong>You will know it worked when</strong> your files appear in the remote repository’s history.</p>
-</div>
-</div>
 </section>
 <section id="wrap-up" class="level2">
 <h2 class="anchored" data-anchor-id="wrap-up">Wrap up</h2>
-<p>You took one spreadsheet from raw data to a published dashboard, with AI alongside you the whole way. Along that path you:</p>
+<p>You took one spreadsheet from raw data to a published dashboard, with AI as a collaborator. Along that path, you did the following:</p>
 <ul>
 <li>Explored <code>retail_sales.xlsx</code> in the Data Explorer and set a reproducible goal</li>
 <li>Built a virtual environment from <code>requirements.txt</code></li>
 <li>Configured a language model provider for Posit Assistant</li>
 <li>Had Posit Assistant write the quarterly aggregation, an itables table, and a plotnine chart</li>
 <li>Exported the conversation with <code>/notebook</code>, then fixed a cell and extended it with a ghost cell</li>
-<li>Turned the analysis into a Quarto report with <code>/report</code> and reshaped it into a publishable dashboard</li>
+<li>Turned the analysis into a Quarto report and reshaped it into a publishable dashboard</li>
 </ul>
 <p>Throughout, the AI drafted and the choices stayed yours: you reviewed each step, accepted or edited it, and kept a reproducible record you can rerun and share.</p>
 <p>From here, dig deeper into the tools you used:</p>
@@ -1137,14 +1219,11 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./tutorial-get-started-quarto.html" class="pagination-link" aria-label="First data analysis with R in a Quarto document">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">First data analysis with R in a Quarto document</span>
+      <a href="./tutorial-migrate-from-RStudio.html" class="pagination-link" aria-label="Migrate from RStudio to Positron">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Migrate from RStudio to Positron</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./tutorial-migrate-from-vscode.html" class="pagination-link" aria-label="Migrate from VS Code to Positron">
-        <span class="nav-page-text">Migrate from VS Code to Positron</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -1160,7 +1239,7 @@ Note
 </ul>
     </div>   
     <div class="nav-footer-center">
-<p>Positron 2026.08.0 (development version)</p>
+<p>Positron 2026.09.0 (development version)</p>
 <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/posit-dev/positron-website/edit/main/tutorial-ai-notebooks.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/posit-dev/positron-website/blob/main/tutorial-ai-notebooks.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/posit-dev/positron/issues/" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">

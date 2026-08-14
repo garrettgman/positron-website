@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.23">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -73,15 +76,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./images/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f3c135505f33e53fe344bb8386717ef.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea75d63aa43f8f8469d06b2d8e4581c1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a8d28592f0d0500d0f95d66d5745551e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-76d21a2efd66f12f3676d5b1fe6b0bb6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": true,
@@ -118,6 +120,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta property="og:site_name" content="Positron">
 <meta property="og:image:height" content="1080">
 <meta property="og:image:width" content="1920">
+<meta name="twitter:title" content="Extending the Connections Pane – Positron">
+<meta name="twitter:description" content="Extend Positron’s Connections pane with custom database connection types. Learn to add new database connection providers and integrate with the New Connections modal.">
+<meta name="twitter:image" content="https://positron.posit.co/dailies/images/positron-social.png">
+<meta name="twitter:image-height" content="1080">
+<meta name="twitter:image-width" content="1920">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar docked nav-fixed quarto-light">
@@ -147,6 +155,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Guides</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./release-notes.html"> 
+<span class="menu-text">Release Notes</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./tutorials.html"> 
 <span class="menu-text">Tutorials</span></a>
   </li>  
@@ -164,24 +176,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
         <li>
+    <a class="dropdown-item" href="https://opensource.posit.co/blog/q/positron/" target="_blank"><i class="bi bi-journal-text" role="img">
+</i> 
+ <span class="dropdown-text">Blog</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="https://posit.co/positron-updates-signup/" target="_blank"><i class="bi bi-envelope" role="img">
 </i> 
  <span class="dropdown-text">Sign up for updates</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://opensource.posit.co/blog/q/positron/" target="_blank"><i class="bi bi-code-slash" role="img">
+    <a class="dropdown-item" href="https://www.linkedin.com/showcase/positron-ide/" target="_blank"><i class="bi bi-linkedin" role="img">
 </i> 
- <span class="dropdown-text">Positron at Posit Open Source</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://posit.co/blog/?post_tag=positron" target="_blank"><i class="bi bi-box-arrow-up-right" role="img">
-</i> 
- <span class="dropdown-text">Company Blog Posts</span></a>
+ <span class="dropdown-text">LinkedIn</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://posit.co/events/?search=positron&amp;poststatus=all" target="_blank"><i class="bi bi-calendar-event" role="img">
 </i> 
  <span class="dropdown-text">Events</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://posit.co/products/" target="_blank"><i class="bi bi-laptop" role="img">
+</i> 
+ <span class="dropdown-text">More Posit products</span></a>
   </li>  
     </ul>
   </li>
@@ -217,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav>
   <div id="quarto-announcement" data-announcement-id="687d7ef531e974cef1bf7d0f11614fac" class="alert alert-danger hidden"><i class="bi bi-cone-striped quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p>You are viewing the development version of Positron documentation for the dailies (2026.08.0). Some features described here are not yet available in the latest regular release. <a href="https://positron.posit.co/">Go to the released documentation</a>.</p>
+<p>You are viewing the development version of Positron documentation for the dailies (2026.09.0). Some features described here are not yet available in the latest regular release. <a href="https://positron.posit.co/">Go to the released documentation</a>.</p>
 </div></div>
 </header>
 <!-- content -->
@@ -239,12 +256,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./welcome.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Install Positron</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1377,7 +1388,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
     </div>   
     <div class="nav-footer-center">
-<p>Positron 2026.08.0 (development version)</p>
+<p>Positron 2026.09.0 (development version)</p>
 <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/posit-dev/positron-website/edit/main/extending-connections.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/posit-dev/positron-website/blob/main/extending-connections.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/posit-dev/positron/issues/" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">

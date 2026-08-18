@@ -32,4 +32,8 @@ Set up an R environment, open a Quarto document, and perform your first data ana
 
 Set up Positron so it looks, feels, and responds like the RStudio you already know.
 
+### Collaborate with AI on an R analysis
+
+Use Posit Assistant to explore Excel data, build an R analysis in a Quarto document, and turn it into a dashboard.
+
 Also see [Features](features.llms.md) to learn about how Positron can keep you productive for all your data science work.
